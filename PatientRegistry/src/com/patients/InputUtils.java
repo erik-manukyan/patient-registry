@@ -101,7 +101,7 @@ public class InputUtils {
 		System.out.println("Please enter the ICD code of the disease: ");
 		String ICD = getCapitalizedInput();
 		
-		System.out.println("Please enter the level of severity of the disease: ");
+		System.out.println("Please enter the level of severity of the disease (e.g., Mild, Moderate, Severe): ");
 		String severityLevel = getCapitalizedInput();
 		
 		System.out.println("Please enter if the disease is contagious or not (Y/N): ");

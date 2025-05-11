@@ -51,7 +51,7 @@ public class Disease {
 		return severityLevel;
 	}
 	
-	public boolean GetContagious() {
+	public boolean isContagious() {
 		return contagious;
 	}
 	
