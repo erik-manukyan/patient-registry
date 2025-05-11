@@ -55,6 +55,11 @@ public class Disease {
 		return contagious;
 	}
 	
+	public void GetFullInfo() {
+		if (contagious) System.out.println(name + " " + ICD + " " + severityLevel + " Contagious");
+		else if (!contagious) System.out.println(name + " " + ICD + " " + severityLevel + " Not contagious");
+	}
+	
 	/* 
 	 * Potential Methods
 	 * 

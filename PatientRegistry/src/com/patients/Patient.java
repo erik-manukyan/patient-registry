@@ -1,5 +1,7 @@
 package com.patients;
 
+import java.util.ArrayList;
+
 /*	
  * This is the class of the patient that is getting registered in a medical Unit.
  * For testing purposes now the attributes are limited to 4, but I'll add more later.
@@ -34,12 +36,14 @@ public class Patient {
 	private String surname;
 	private String sex;
 	private int birthYear;
+	private ArrayList<Disease> diseases;
 	
 	public Patient(String name, String surname, String sex, int birthYear) {
 		this.name = name;
 		this.surname = surname;
 		this.sex = sex;
 		this.birthYear = birthYear;
+		this.diseases = new ArrayList<>();
 	}
 	
 	// List of Getters
@@ -90,5 +94,18 @@ public class Patient {
 	
 	public void SetBirthYear(int birthYear) {
 		this.birthYear = birthYear;
+	}
+	
+	// List of Disease Management
+	
+	public void AddDisease(Disease newDisease) {
+		if (!diseases.contains(newDisease)) {
+			diseases.add(newDisease);
+		} else System.out.println("Disease already added. ");
+		
+	}
+	
+	public  ArrayList<Disease> ShowDisease() {
+		return diseases;
 	}
 }
