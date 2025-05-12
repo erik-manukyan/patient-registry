@@ -1,7 +1,7 @@
-package com.patients;
+package com.patients.models;
 
 import java.util.ArrayList;
-
+import java.time.Year;
 /*	
  * This is the class of the patient that is getting registered in a medical Unit.
  * For testing purposes now the attributes are limited to 4, but I'll add more later.
@@ -48,24 +48,66 @@ public class Patient {
 	
 	// List of Getters
 	
-	public String GetName() {
+	public String getName() {
 		return name;
 	}
 	
-	public String GetSurname() {
+	public String getSurname() {
 		return surname;
 	}
 	
-	public String GetSex() {
+	public String getSex() {
 		return sex;
 	}
 	
-	public int GetBirthYear() {
+	public int getBirthYear() {
 		return birthYear;
 	}
 	
-	public void GetFullInfo() {
-		System.out.println(name + " " + surname + " " + sex + " " + birthYear);
+	public String toString() {
+		String info = name + " " + surname + " " + sex + " " + birthYear;
+		return info;		
+	}
+	
+	
+	// List of Setters
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	
+	public void setBirthYear(int birthYear) {
+		this.birthYear = birthYear;
+	}
+	
+	// List of Disease Management
+	
+	public void addDisease(Disease newDisease) {
+		if (!diseases.contains(newDisease)) {
+			diseases.add(newDisease);
+		}
+	}
+	
+	public boolean containsDisease(Disease newDisease) {
+		return diseases.contains(newDisease);
+	}
+	
+	public void showDiseases() {
+		if (diseases.isEmpty()) {
+			System.out.println("Currently no diseases registered.");
+		} else {
+			for (Disease disease : diseases) {
+				System.out.println(disease);;
+			}
+		}
 	}
 	
 	/* 
@@ -78,34 +120,9 @@ public class Patient {
 	 * Generate a Hospital Report summarising the patient's status.
 	 */
 	
-	// List of Setters
+	// Calculate Age from Date of Birth
 	
-	public void SetName(String name) {
-		this.name = name;
-	}
-	
-	public void SetSurname(String surname) {
-		this.surname = surname;
-	}
-	
-	public void SetSex(String sex) {
-		this.sex = sex;
-	}
-	
-	public void SetBirthYear(int birthYear) {
-		this.birthYear = birthYear;
-	}
-	
-	// List of Disease Management
-	
-	public void AddDisease(Disease newDisease) {
-		if (!diseases.contains(newDisease)) {
-			diseases.add(newDisease);
-		} else System.out.println("Disease already added. ");
-		
-	}
-	
-	public  ArrayList<Disease> ShowDisease() {
-		return diseases;
+	public int getAge() {
+		return Year.now().getValue() - birthYear;
 	}
 }

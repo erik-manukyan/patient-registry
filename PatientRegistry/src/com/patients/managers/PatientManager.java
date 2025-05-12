@@ -1,4 +1,6 @@
-package com.patients;
+package com.patients.managers;
+
+import com.patients.models.Patient;
 
 public class PatientManager {
 	private Patient[] patients;
@@ -7,7 +9,11 @@ public class PatientManager {
 		patients = new Patient[capacity];
 	}
 	
-	public boolean hasAvailableBed() {
+	public Patient[] getPatients(){
+		return patients;
+	}
+	
+	public boolean hasAvailableBed( ) {
 		for (Patient patient : patients) {
 			if (patient == null) {
 				return true;
@@ -33,18 +39,12 @@ public class PatientManager {
 	}	
 	
 	public void viewPatients() {
-		System.out.println("+---------------------------------------------+");
-		System.out.println("|                VIEW PATIENTS                |");
-		System.out.println("+---------------------------------------------+");
-		boolean found = false;
-		for (Patient patient : patients) {
-			if (patient != null) {
-				patient.GetFullInfo();
-				found = true;
-			} 
+		boolean found = isEmpty();
+		for (int i = 0; i < patients.length; i++) {
+			System.out.println((i + 1) + ". " + patients[i]);
 		}
 		
-		if (!found) {
+		if (found) {
 			System.out.println("No patients currently registered.");
 		}
 	}
@@ -53,11 +53,9 @@ public class PatientManager {
 		for (Patient patient : patients) {
 			if (patient != null) {
 				return false;
-			} else {
-				return true;
-			}
+			} 
 		}
-		return false;
+		return true;
 	}
 	
 	public Patient[] getPatientsList() {

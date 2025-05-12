@@ -1,6 +1,8 @@
-package com.patients;
+package com.patients.managers;
 
 import java.util.ArrayList;
+
+import com.patients.models.Disease;
 
 public class DiseaseManager {
 	private ArrayList<Disease> diseases;
@@ -17,8 +19,8 @@ public class DiseaseManager {
 		if (diseases.isEmpty()) {
 			System.out.println("Currently no diseases registered.");
 		} else {
-			for (Disease disease : diseases) {
-				disease.GetFullInfo();
+			for (int i = 0; i < diseases.size(); i++) {
+				System.out.println((i + 1) + ". " + diseases.get(i));
 			}
 		}
 	}
@@ -32,12 +34,16 @@ public class DiseaseManager {
 	}
 	
 	public Disease getDisease(int index) {
-		return diseases.get(index - 1);
+		if (index > 0 && index <= diseases.size()) {
+			return diseases.get(index - 1);			
+		} else {
+			throw new IndexOutOfBoundsException("Invalid disease index. ");
+		}
 	}
 	
 	public boolean isEmpty() {
-		if (diseases.isEmpty()) {
-			return true;
-		} else return false;
+		return diseases.isEmpty();
 	}
+	
+	
 }

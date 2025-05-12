@@ -1,4 +1,4 @@
-package com.patients;
+package com.patients.models;
 
 /* 
  * This is the class of diseases of the patients currently registered in the medical unit
@@ -39,15 +39,15 @@ public class Disease {
 	
 	// List of Getters
 	
-	public String GetName() {
+	public String getName() {
 		return name;
 	}
 	
-	public String GetICD() {
+	public String getICD() {
 		return ICD;
 	}
 	
-	public String GetSeverityLevel() {
+	public String getSeverityLevel() {
 		return severityLevel;
 	}
 	
@@ -55,9 +55,9 @@ public class Disease {
 		return contagious;
 	}
 	
-	public void GetFullInfo() {
-		if (contagious) System.out.println(name + " " + ICD + " " + severityLevel + " Contagious");
-		else if (!contagious) System.out.println(name + " " + ICD + " " + severityLevel + " Not contagious");
+	public String toString() {
+		String info = name + " " + ICD + " " + severityLevel;
+		return contagious ? info + " Contagious" : info + " Not contagious";
 	}
 	
 	/* 
@@ -71,19 +71,19 @@ public class Disease {
 	
 	// List of Setters
 	
-	public void SetName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
-	public void SetICD(String ICD) {
+	public void setICD(String ICD) {
 		this.ICD = ICD;
 	}
 	
-	public void SetSeverityLevel(String severityLevel) {
+	public void setSeverityLevel(String severityLevel) {
 		this.severityLevel = severityLevel;
 	}
 	
-	public void SetContagious(boolean contagious) {
+	public void setContagious(boolean contagious) {
 		this.contagious = contagious;
 	}
 }
